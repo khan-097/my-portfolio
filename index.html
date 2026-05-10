@@ -3,318 +3,322 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Md. Junaid Khan | Portfolio</title>
+<title>Junaid Khan — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
---gold:#c9a84c;
---gold-light:#e8c97a;
---dark:#0a0a0a;
---dark2:#111111;
---dark3:#1a1a1a;
---text:#f0ece4;
---muted:#888;
---border:rgba(201,168,76,0.2);
+  --black:#080808;
+  --off-black:#0f0f0f;
+  --card:#141414;
+  --white:#f5f2ee;
+  --cream:#e8e2d9;
+  --accent:#e8c97a;
+  --muted:#5a5a5a;
+  --border:rgba(245,242,238,0.08);
+  --fb:#1877f2;
 }
 html{scroll-behavior:smooth}
-body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
-#cursor{width:8px;height:8px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform 0.15s;transform:translate(-50%,-50%)}
-#cursor-ring{width:36px;height:36px;border:1px solid rgba(201,168,76,0.5);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all 0.3s ease;transform:translate(-50%,-50%)}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(10,10,10,0.97),transparent)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);letter-spacing:2px;font-weight:700}
-.nav-links{display:flex;gap:35px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;transition:color 0.3s}
-.nav-links a:hover{color:var(--gold)}
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:120px 60px 60px;gap:80px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,0.06) 0%,transparent 60%)}
-.hero-badge{display:inline-block;border:1px solid var(--border);padding:6px 18px;font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5vw,5rem);line-height:1.05;font-weight:900;margin-bottom:20px}
-.hero h1 span{color:var(--gold)}
-.hero-sub{color:var(--muted);font-size:1rem;line-height:1.8;max-width:420px;margin-bottom:40px}
-.hero-contacts{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
-.hero-contact-item{display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--muted)}
-.hero-contact-item svg{width:16px;height:16px;color:var(--gold);flex-shrink:0}
-.hero-contact-item a{color:var(--muted);text-decoration:none;transition:color 0.3s}
-.hero-contact-item a:hover{color:var(--gold)}
-.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
-.btn-primary{background:var(--gold);color:#000;padding:13px 32px;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s}
-.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
-.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 32px;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;background:transparent;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.hero-img-wrap{position:relative;display:flex;justify-content:center}
-.hero-img-frame{position:relative;width:380px;height:480px}
-.hero-img-frame::before{content:'';position:absolute;top:-12px;right:-12px;width:100%;height:100%;border:1px solid var(--border)}
-.hero-img-frame::after{content:'';position:absolute;bottom:-12px;left:-12px;width:100%;height:100%;border:1px solid rgba(201,168,76,0.1)}
-.hero-img-placeholder{width:100%;height:100%;background:var(--dark3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;z-index:1;border:1px solid rgba(201,168,76,0.08);overflow:hidden}
-.hero-img-placeholder svg{width:60px;height:60px;color:rgba(201,168,76,0.3)}
-.hero-img-placeholder p{color:var(--muted);font-size:0.8rem;letter-spacing:2px;text-transform:uppercase}
-.hero-img-placeholder img{width:100%;height:100%;object-fit:cover;display:block}
-.hero-stats{position:absolute;bottom:-20px;left:-20px;background:var(--dark2);border:1px solid var(--border);padding:20px 28px;z-index:2}
-.hero-stats span{display:block;font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);font-weight:700;line-height:1}
-.hero-stats p{font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
-section{padding:100px 60px}
-.sec-label{font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;margin-bottom:16px}
-.sec-line{width:60px;height:1px;background:var(--gold);margin-bottom:60px}
-.section-header{margin-bottom:60px}
-.divider{width:calc(100% - 120px);height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:0 60px}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:4px}
-.gallery-card{position:relative;overflow:hidden;cursor:pointer;background:var(--dark3);aspect-ratio:4/3}
-.gallery-card img,.gallery-card video{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none}
+
+.cursor{width:10px;height:10px;background:var(--white);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.15s;mix-blend-mode:difference}
+.cursor-trail{width:36px;height:36px;border:1px solid rgba(245,242,238,0.2);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.2s ease;mix-blend-mode:difference}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);backdrop-filter:blur(16px);background:rgba(8,8,8,0.88)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:4px;color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:32px}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--black);background:var(--white);padding:9px 22px;text-decoration:none;transition:background 0.3s}
+.nav-cta:hover{background:var(--accent)}
+
+/* ══ HERO ══ */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 32px 100px;position:relative;overflow:hidden;text-align:center}
+.hero-bg-word{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,22vw,280px);color:rgba(245,242,238,0.025);letter-spacing:12px;pointer-events:none;user-select:none;white-space:nowrap;top:50%;transform:translateY(-50%);z-index:0}
+
+/* eyebrow */
+.hero-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:36px;z-index:1;position:relative}
+.eyebrow-line{width:44px;height:1px;background:var(--muted)}
+.eyebrow-text{font-size:0.62rem;letter-spacing:5px;text-transform:uppercase;color:var(--muted)}
+
+/* PROFILE */
+.profile-wrap{position:relative;margin-bottom:28px;z-index:1;display:inline-block}
+.profile-ring{width:160px;height:160px;border-radius:50%;background:conic-gradient(var(--accent) 0deg,rgba(232,201,122,0.15) 180deg,var(--accent) 360deg);padding:2.5px;display:inline-block}
+.profile-inner{width:100%;height:100%;border-radius:50%;background:var(--card);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.profile-inner img{width:100%;height:100%;object-fit:cover}
+.profile-inner svg{width:48px;height:48px;color:rgba(245,242,238,0.1)}
+.profile-badge{position:absolute;bottom:4px;right:0px;background:rgba(8,8,8,0.92);border:1px solid rgba(232,201,122,0.25);padding:5px 12px;border-radius:100px;font-size:0.56rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.profile-badge::before{content:'';width:5px;height:5px;background:#2ecc71;border-radius:50%;animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* ══ NAME BLOCK — redesigned ══ */
+.name-block{position:relative;z-index:1;margin-bottom:32px}
+
+/* Bengali name with decorative lines */
+.name-bengali-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:10px}
+.name-deco-line{flex:0 0 40px;height:1px;background:linear-gradient(to right,transparent,var(--accent))}
+.name-deco-line.right{background:linear-gradient(to left,transparent,var(--accent))}
+.name-bengali{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,3vw,1.6rem);color:var(--accent);letter-spacing:4px;font-weight:300}
+
+/* Big English name */
+.name-english{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5rem,14vw,11rem);letter-spacing:3px;line-height:0.88;color:var(--white);display:block;position:relative}
+/* subtle glow under name */
+.name-english::after{content:'KHAN';position:absolute;left:50%;transform:translateX(-50%);bottom:-10px;font-size:clamp(4.5rem,14vw,11rem);color:transparent;-webkit-text-stroke:1px rgba(232,201,122,0.08);letter-spacing:3px;pointer-events:none;user-select:none}
+
+/* role tag */
+.name-role{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-size:0.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted)}
+.name-role-dot{width:3px;height:3px;background:var(--accent);border-radius:50%;display:inline-block}
+
+/* ══ INFO CARDS — horizontal chips ══ */
+.info-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:34px;z-index:1;position:relative;max-width:600px}
+.chip{display:flex;align-items:center;gap:8px;background:rgba(245,242,238,0.04);border:1px solid var(--border);padding:9px 16px;border-radius:100px;transition:all 0.3s}
+.chip:hover{border-color:rgba(232,201,122,0.3);background:rgba(232,201,122,0.05)}
+.chip svg{width:13px;height:13px;color:var(--accent);flex-shrink:0}
+.chip-label{font-size:0.65rem;letter-spacing:1px;color:var(--muted);margin-right:2px}
+.chip-value{font-size:0.75rem;color:var(--cream)}
+.chip a{color:var(--cream);text-decoration:none}
+.chip a:hover{color:var(--accent)}
+
+/* BTNS */
+.hero-btns{display:flex;gap:12px;justify-content:center;position:relative;z-index:1}
+.btn-fill{background:var(--white);color:var(--black);padding:12px 32px;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block;transition:background 0.3s}
+.btn-fill:hover{background:var(--accent)}
+.btn-ghost{border:1px solid var(--border);color:var(--cream);padding:12px 32px;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;background:transparent;text-decoration:none;display:inline-block;transition:all 0.3s}
+.btn-ghost:hover{border-color:rgba(245,242,238,0.25);background:rgba(245,242,238,0.04)}
+
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;opacity:0.3;z-index:1}
+.scroll-hint span{font-size:0.56rem;letter-spacing:4px;text-transform:uppercase}
+.scroll-bar{width:1px;height:34px;background:var(--white);animation:grow 2s ease-in-out infinite}
+@keyframes grow{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* DIVIDER */
+.sec-divider{display:flex;align-items:center;padding:0 48px}
+.sdiv-line{flex:1;height:1px;background:var(--border)}
+.sdiv-text{font-size:0.58rem;letter-spacing:5px;text-transform:uppercase;color:var(--muted);padding:0 20px}
+
+/* WORK */
+#work{padding:60px 48px 96px}
+.work-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:42px}
+.work-eyebrow{font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.work-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,5rem);letter-spacing:3px;line-height:1}
+.work-title span{color:var(--accent)}
+.work-num{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:rgba(245,242,238,0.06);font-style:italic;line-height:1}
+
+.tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:34px}
+.tab-btn{padding:11px 22px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;color:var(--muted);cursor:none;font-family:'DM Sans',sans-serif;font-size:0.66rem;letter-spacing:3px;text-transform:uppercase;transition:all 0.3s}
+.tab-btn.active{color:var(--white);border-bottom-color:var(--accent)}
+.tab-btn:hover{color:var(--cream)}
+.tab-panel{display:none}.tab-panel.active{display:block}
+
+.gallery-grid{columns:3;gap:3px;column-gap:3px}
+.gallery-card{break-inside:avoid;margin-bottom:3px;position:relative;overflow:hidden;cursor:none;background:var(--card)}
+.gallery-card img,.gallery-card video{width:100%;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)}
 .gallery-card:hover img,.gallery-card:hover video{transform:scale(1.06)}
-.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:20px}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.88) 0%,transparent 55%);opacity:0;transition:opacity 0.35s;padding:16px;display:flex;flex-direction:column;justify-content:flex-end}
 .gallery-card:hover .gallery-overlay{opacity:1}
-.gallery-name{font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.9)}
-.loading-text{text-align:center;padding:60px;color:var(--muted);font-size:0.85rem;letter-spacing:2px;text-transform:uppercase}
-.tabs{display:flex;gap:0;margin-bottom:40px;border-bottom:1px solid var(--border)}
-.tab-btn{padding:14px 28px;background:none;border:none;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.3s}
-.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
-.tab-btn:hover{color:var(--text)}
-.tab-panel{display:none}
-.tab-panel.active{display:block}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.about-text{font-size:1rem;line-height:1.9;color:rgba(240,236,228,0.75);margin-bottom:30px}
-.about-details{display:flex;flex-direction:column;gap:0}
-.detail-row{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid rgba(201,168,76,0.1)}
-.detail-row svg{width:20px;height:20px;color:var(--gold);flex-shrink:0}
-.detail-label{font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
-.detail-value{font-size:0.95rem;color:var(--text)}
-#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:999;align-items:center;justify-content:center}
+.gallery-name{font-size:0.66rem;letter-spacing:3px;text-transform:uppercase;color:var(--cream)}
+.gallery-cat{font-size:0.54rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-top:2px}
+.loading-text{text-align:center;padding:56px;color:var(--muted);font-size:0.66rem;letter-spacing:3px;text-transform:uppercase;display:block}
+
+/* ══ FOOTER — redesigned ══ */
+footer{padding:64px 48px 40px;border-top:1px solid var(--border)}
+
+/* Top row: brand + social */
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;gap:32px;flex-wrap:wrap}
+.footer-brand{}
+.footer-logo-big{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:4px;display:block;color:var(--white);margin-bottom:10px}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--muted);line-height:1.8;max-width:260px}
+
+/* Social links */
+.footer-socials{display:flex;flex-direction:column;gap:10px}
+.social-link{display:flex;align-items:center;gap:12px;padding:12px 18px;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:all 0.3s;min-width:220px}
+.social-link:hover{border-color:rgba(245,242,238,0.2);background:rgba(245,242,238,0.03)}
+.social-link.fb:hover{border-color:rgba(24,119,242,0.4);background:rgba(24,119,242,0.06)}
+.social-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.social-icon.email-icon{background:rgba(232,201,122,0.1);border:1px solid rgba(232,201,122,0.15)}
+.social-icon.email-icon svg{color:var(--accent)}
+.social-icon.fb-icon{background:rgba(24,119,242,0.12);border:1px solid rgba(24,119,242,0.2)}
+.social-icon.fb-icon svg{color:#1877f2}
+.social-info{}
+.social-platform{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.social-handle{font-size:0.8rem;color:var(--cream);display:block}
+
+/* Middle row: contact info chips */
+.footer-contacts{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:44px}
+.fcontact-chip{display:flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:all 0.3s}
+.fcontact-chip:hover{border-color:rgba(232,201,122,0.2);background:rgba(232,201,122,0.04)}
+.fcontact-chip svg{width:14px;height:14px;color:var(--accent);flex-shrink:0}
+.fcontact-chip span{font-size:0.78rem;color:var(--cream)}
+
+/* Bottom */
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border)}
+.footer-copy,.footer-role{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+
+/* LIGHTBOX */
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:999;align-items:center;justify-content:center}
 #lb.open{display:flex}
-#lb-close{position:absolute;top:24px;right:32px;font-size:2rem;color:var(--muted);cursor:pointer;background:none;border:none;transition:color 0.3s;font-family:sans-serif}
-#lb-close:hover{color:var(--gold)}
-footer{padding:40px 60px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.footer-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.1rem;letter-spacing:2px}
-.footer-copy{color:var(--muted);font-size:0.78rem;letter-spacing:1px}
+#lb-close{position:absolute;top:20px;right:28px;color:var(--muted);cursor:none;background:none;border:none;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;font-family:'DM Sans',sans-serif;transition:color 0.3s}
+#lb-close:hover{color:var(--white)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;padding:100px 30px 60px;gap:50px}
-  .hero-img-frame{width:100%;max-width:360px;height:400px}
-  nav{padding:20px 30px}
-  .nav-links{gap:18px}
-  section{padding:80px 30px}
-  .about-grid{grid-template-columns:1fr;gap:40px}
-  footer{flex-direction:column;gap:16px;text-align:center}
-  .divider{width:calc(100% - 60px);margin:0 30px}
-  .tabs{overflow-x:auto}
-  .tab-btn{padding:12px 18px;white-space:nowrap}
+  nav{padding:18px 22px}
+  nav::after{left:22px;right:22px}
+  .nav-cta{display:none}
+  .hero{padding:100px 20px 90px}
+  #work{padding:50px 22px 80px}
+  .work-top{flex-direction:column;align-items:flex-start;gap:4px}
+  .gallery-grid{columns:2}
+  .sec-divider{padding:0 22px}
+  footer{padding:48px 22px 36px}
+  .footer-top{flex-direction:column;gap:28px}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center}
+  .social-link{min-width:unset;width:100%}
+}
+@media(max-width:500px){
+  .gallery-grid{columns:1}
+  .info-chips{gap:8px}
 }
 </style>
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursor-trail"></div>
 
 <nav>
   <div class="nav-logo">JK.</div>
-  <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+    <a href="mailto:mdjunaidkhan097@gmail.com" class="nav-cta">Hire Me</a>
+  </div>
 </nav>
 
+<!-- ══ HERO ══ -->
 <section class="hero" id="hero">
-  <div class="hero-content">
-    <div class="hero-badge">Portfolio · 2026</div>
-    <h1>মোঃ যুনাইদ<br><span>খান</span></h1>
-    <p class="hero-sub">Photographer · Designer · Creative Professional — I tell stories through my work and capture life through the lens.</p>
-    <div class="hero-contacts">
-      <div class="hero-contact-item">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
-        <a href="tel:01743558176">+880 1743-558176</a>
-      </div>
-      <div class="hero-contact-item">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-        <a href="mailto:mdjunaidkhan097@gmail.com">mdjunaidkhan097@gmail.com</a>
+  <div class="hero-bg-word">JUNAID</div>
+
+  <div class="hero-eyebrow reveal">
+    <div class="eyebrow-line"></div>
+    <div class="eyebrow-text">Portfolio · 2025· Bangladesh</div>
+    <div class="eyebrow-line"></div>
+  </div>
+
+  <!-- Profile -->
+  <div class="profile-wrap reveal d1">
+    <div class="profile-ring">
+      <div class="profile-inner" id="profile-img-container">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
       </div>
     </div>
-    <div class="hero-btns">
-      <a href="#work" class="btn-primary">View My Work</a>
-      <a href="#about" class="btn-outline">About Me</a>
+    <div class="profile-badge"> learner </div>
+  </div>
+
+  <!-- ══ NAME BLOCK ══ -->
+  <div class="name-block reveal d2">
+    <div class="name-bengali-wrap">
+      <div class="name-deco-line"></div>
+      <span class="name-bengali">মোঃ যুনাইদ</span>
+      <div class="name-deco-line right"></div>
+    </div>
+    <div class="name-role">
+      <span>Photographer</span>
+      <span class="name-role-dot"></span>
+      <span>Designer</span>
+      <span class="name-role-dot"></span>
+      <span>Creative</span>
     </div>
   </div>
-  <div class="hero-img-wrap">
-    <div class="hero-img-frame">
-      <div class="hero-img-placeholder" id="profile-img-container">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-        <p>Your Photo Here</p>
-      </div>
-      <div class="hero-stats">
-        <span id="total-count">0+</span>
-        <p>Projects Done</p>
-      </div>
+
+  <!-- ══ INFO CHIPS ══ -->
+  <div class="info-chips reveal d3">
+    <div class="chip">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+      <span class="chip-value">Bangladesh 🇧🇩</span>
     </div>
+    <div class="chip">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+      <span class="chip-value"><a href="tel:01743558176">+880 1743-558176</a></span>
+    </div>
+    <div class="chip">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+      <span class="chip-value"><a href="mailto:mdjunaidkhan097@gmail.com">mdjunaidkhan097@gmail.com</a></span>
+    </div>
+    <div class="chip">
+      <!-- Facebook icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="color:#1877f2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      <span class="chip-value"><a href="https://www.facebook.com/Junaid.Khan.097" target="_blank">Junaid.Khan.097</a></span>
+    </div>
+  </div>
+
+  <div class="hero-btns reveal d4">
+    <a href="#work" class="btn-fill">View Work</a>
+    <a href="mailto:mdjunaidkhan097@gmail.com" class="btn-ghost">Get In Touch</a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-bar"></div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="sec-divider">
+  <div class="sdiv-line"></div>
+  <div class="sdiv-text">My Collection</div>
+  <div class="sdiv-line"></div>
+</div>
 
+<!-- ══ WORK ══ -->
 <section id="work">
-  <div class="section-header">
-    <span class="sec-label">My Work</span>
-    <h2 class="sec-title">My Collection</h2>
-    <div class="sec-line"></div>
+  <div class="work-top reveal">
+    <div>
+      <div class="work-eyebrow">// Selected Works</div>
+      <div class="work-title">My <span>Portfolio</span></div>
+    </div>
+    <div class="work-num" id="total-count">00</div>
   </div>
-  <div class="tabs">
+
+  <div class="tabs reveal">
     <button class="tab-btn active" onclick="switchTab('photos',this)">Photos</button>
     <button class="tab-btn" onclick="switchTab('videos',this)">Videos</button>
     <button class="tab-btn" onclick="switchTab('designs',this)">Designs</button>
     <button class="tab-btn" onclick="switchTab('other',this)">Other Work</button>
   </div>
-  <div id="tab-photos" class="tab-panel active">
-    <div class="gallery-grid" id="photos-container"><div class="loading-text" style="grid-column:1/-1">Loading...</div></div>
-  </div>
-  <div id="tab-videos" class="tab-panel">
-    <div class="gallery-grid" id="videos-container"><div class="loading-text" style="grid-column:1/-1">Loading...</div></div>
-  </div>
-  <div id="tab-designs" class="tab-panel">
-    <div class="gallery-grid" id="designs-container"><div class="loading-text" style="grid-column:1/-1">Loading...</div></div>
-  </div>
-  <div id="tab-other" class="tab-panel">
-    <div class="gallery-grid" id="other-container"><div class="loading-text" style="grid-column:1/-1">Loading...</div></div>
-  </div>
+
+  <div id="tab-photos" class="tab-panel active"><div class="gallery-grid" id="photos-container"><div class="loading-text">Loading...</div></div></div>
+  <div id="tab-videos" class="tab-panel"><div class="gallery-grid" id="videos-container"><div class="loading-text">Loading...</div></div></div>
+  <div id="tab-designs" class="tab-panel"><div class="gallery-grid" id="designs-container"><div class="loading-text">Loading...</div></div></div>
+  <div id="tab-other" class="tab-panel"><div class="gallery-grid" id="other-container"><div class="loading-text">Loading...</div></div></div>
 </section>
 
-<div class="divider"></div>
-
-<section id="about">
-  <div class="section-header">
-    <span class="sec-label">About Me</span>
-    <h2 class="sec-title">Who I Am</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="about-grid">
-    <div>
-      <p class="about-text">I am Md. Junaid Khan — a passionate photographer and creative designer based in Bangladesh. Through my work, I capture moments that last forever and tell stories through the art of design.</p>
-      <p class="about-text">In every project, I combine beauty, meaning, and professionalism. My goal is to bring my client's vision to life and create work that truly stands out.</p>
-      <a href="mailto:mdjunaidkhan097@gmail.com" class="btn-primary" style="margin-top:10px">Get In Touch</a>
+<!-- ══ FOOTER ══ -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand reveal">
+      <span class="footer-logo-big">Junaid Khan</span>
+      <p class="footer-tagline">"I capture life's stories through the lens of my camera — turning every moment into art."</p>
     </div>
-    <div class="about-details">
-      <div class="detail-row">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-        <div><span class="detail-label">Name</span><span class="detail-value">মোঃ যুনাইদ খান</span></div>
-      </div>
-      <div class="detail-row">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
-        <div><span class="detail-label">Phone</span><span class="detail-value">+880 1743-558176</span></div>
-      </div>
-      <div class="detail-row">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-        <div><span class="detail-label">Email</span><span class="detail-value">mdjunaidkhan097@gmail.com</span></div>
-      </div>
-      <div class="detail-row">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-        <div><span class="detail-label">Location</span><span class="detail-value">Bangladesh</span></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<footer>
-  <div class="footer-logo">Junaid Khan</div>
-  <div class="footer-copy">© 2026 Md. Junaid Khan · All rights reserved</div>
-</footer>
-
-<div id="lb">
-  <button id="lb-close" onclick="closeLb()">✕</button>
-  <div id="lb-content"></div>
-</div>
-
-<script>
-const GITHUB_USER = "khan-097";
-const REPO_NAME = "my-portfolio";
-const SECTIONS = {
-  photos:  {folder:"assets/photos",  types:/\.(jpg|jpeg|png|webp|gif)$/i},
-  videos:  {folder:"assets/videos",  types:/\.(mp4|webm)$/i},
-  designs: {folder:"assets/designs", types:/\.(jpg|jpeg|png|webp)$/i},
-  other:   {folder:"assets/other",   types:/\.(jpg|jpeg|png|webp|mp4)$/i}
-};
-let totalFiles=0;
-const loaded={};
-
-async function loadProfileImage(){
-  const exts=['jpg','jpeg','png','webp'];
-  for(const ext of exts){
-    const url=`https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/assets/profile.${ext}`;
-    try{
-      const res=await fetch(url,{method:'HEAD'});
-      if(res.ok){
-        document.getElementById('profile-img-container').innerHTML=`<img src="${url}" alt="Md. Junaid Khan">`;
-        return;
-      }
-    }catch(e){}
-  }
-}
-
-async function loadSection(name){
-  if(loaded[name])return;
-  loaded[name]=true;
-  const {folder,types}=SECTIONS[name];
-  const container=document.getElementById(name+'-container');
-  const API=`https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${folder}`;
-  try{
-    const res=await fetch(API);
-    if(!res.ok)throw new Error();
-    const files=await res.json();
-    if(!Array.isArray(files)||files.length===0){
-      container.innerHTML='<div class="loading-text" style="grid-column:1/-1">Nothing uploaded yet.</div>';
-      return;
-    }
-    container.innerHTML='';
-    files.forEach(file=>{
-      if(!types.test(file.name))return;
-      const url=`https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/${file.path}`;
-      const isVideo=/\.(mp4|webm)$/i.test(file.name);
-      const card=document.createElement('div');
-      card.className='gallery-card';
-      card.onclick=()=>openLb(isVideo?'video':'img',url);
-      const niceName=file.name.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ');
-      card.innerHTML=isVideo
-        ?`<video src="${url}" muted loading="lazy"></video><div class="gallery-overlay"><span class="gallery-name">${niceName}</span></div>`
-        :`<img src="${url}" alt="${niceName}" loading="lazy"><div class="gallery-overlay"><span class="gallery-name">${niceName}</span></div>`;
-      container.appendChild(card);
-      totalFiles++;
-      document.getElementById('total-count').textContent=totalFiles+'+';
-    });
-  }catch(e){
-    container.innerHTML='<div class="loading-text" style="grid-column:1/-1">Upload files to GitHub to see them here.</div>';
-  }
-}
-
-function switchTab(name,btn){
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('tab-'+name).classList.add('active');
-  loadSection(name);
-}
-
-function openLb(type,url){
-  document.getElementById('lb-content').innerHTML=type==='video'
-    ?`<video src="${url}" controls autoplay style="max-width:90vw;max-height:88vh"></video>`
-    :`<img src="${url}" style="max-width:90vw;max-height:88vh;object-fit:contain">`;
-  document.getElementById('lb').classList.add('open');
-}
-function closeLb(){
-  document.getElementById('lb').classList.remove('open');
-  document.getElementById('lb-content').innerHTML='';
-}
-document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)closeLb()});
-
-if(window.matchMedia('(pointer:fine)').matches){
-  const cur=document.getElementById('cursor');
-  const ring=document.getElementById('cursor-ring');
-  document.addEventListener('mousemove',e=>{
-    cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
-    ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';
-  });
-}
-
-loadProfileImage();
-loadSection('photos');
-</script>
-</body>
-</html>
+    <!-- Social cards -->
+    <div class="footer-socials reveal d1">
+      <a href="mailto:mdjunaidkhan097@gmail.com" class="social-link">
+        <div class="social-icon email-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        </div>
+        <div class="social-info">
+          <span class="social-platform">Email</span>
+          <span class="social-handle">mdjunaidkhan097@gmail.com</span>
+        </div>
+      </a>
+      
