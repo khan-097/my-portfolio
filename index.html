@@ -4,380 +4,312 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Junaid Khan — Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --black:#080808;
-  --off-black:#0f0f0f;
-  --card:#141414;
-  --white:#f5f2ee;
-  --cream:#e8e2d9;
-  --accent:#e8c97a;
-  --muted:#5a5a5a;
-  --border:rgba(245,242,238,0.08);
+  --black:#070709;
+  --dark:#0d0d12;
+  --card:#13131a;
+  --card2:#18181f;
+  --white:#f0ecff;
+  --cream:#ccc8e0;
+  --accent:#a78bfa;
+  --accent2:#7c3aed;
+  --gold:#e8c97a;
+  --muted:#4a4a6a;
+  --border:rgba(167,139,250,0.12);
+  --glow:rgba(167,139,250,0.18);
   --fb:#1877f2;
 }
 html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;min-height:100vh}
 
-.cursor{width:10px;height:10px;background:var(--white);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.15s;mix-blend-mode:difference}
-.cursor-trail{width:36px;height:36px;border:1px solid rgba(245,242,238,0.2);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.2s ease;mix-blend-mode:difference}
+/* GLOW BG */
+body::before{content:'';position:fixed;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,0.07) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);backdrop-filter:blur(16px);background:rgba(8,8,8,0.88)}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:4px;color:var(--white)}
-.nav-right{display:flex;align-items:center;gap:32px}
-.nav-links{display:flex;gap:26px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;transition:color 0.3s}
-.nav-links a:hover{color:var(--white)}
-.nav-cta{font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--black);background:var(--white);padding:9px 22px;text-decoration:none;transition:background 0.3s}
-.nav-cta:hover{background:var(--accent)}
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:14px 20px;display:flex;align-items:center;gap:12px;background:rgba(7,7,9,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;color:var(--white);flex-shrink:0}
+
+/* SEARCH */
+.search-wrap{flex:1;position:relative}
+.search-input{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:100px;padding:8px 16px 8px 36px;font-size:0.78rem;color:var(--white);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.3s,box-shadow 0.3s}
+.search-input::placeholder{color:var(--muted)}
+.search-input:focus{border-color:rgba(167,139,250,0.4);box-shadow:0 0 16px rgba(167,139,250,0.1)}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--muted)}
+.search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted);cursor:pointer;display:none;background:none;border:none}
+.search-clear.visible{display:block}
+
+/* HAMBURGER */
+.hamburger{width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:8px;flex-shrink:0;transition:border-color 0.3s}
+.hamburger:hover{border-color:rgba(167,139,250,0.3)}
+.hamburger span{display:block;width:16px;height:1.5px;background:var(--cream);border-radius:2px;transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+
+/* DRAWER */
+.drawer{position:fixed;top:0;right:-280px;width:260px;height:100vh;background:var(--dark);border-left:1px solid var(--border);z-index:400;transition:right 0.35s cubic-bezier(0.16,1,0.3,1);padding:80px 28px 40px;display:flex;flex-direction:column;gap:8px}
+.drawer.open{right:0;box-shadow:-20px 0 60px rgba(0,0,0,0.5)}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:390;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.drawer-overlay.open{opacity:1;pointer-events:all}
+.drawer-link{display:flex;align-items:center;gap:12px;padding:14px 16px;color:var(--cream);text-decoration:none;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;border-radius:8px;transition:all 0.3s;border:1px solid transparent}
+.drawer-link:hover{background:rgba(167,139,250,0.06);border-color:var(--border);color:var(--accent)}
+.drawer-link svg{width:16px;height:16px;color:var(--accent)}
+.drawer-divider{height:1px;background:var(--border);margin:8px 0}
 
 /* ══ HERO ══ */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 32px 100px;position:relative;overflow:hidden;text-align:center}
-.hero-bg-word{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,22vw,280px);color:rgba(245,242,238,0.025);letter-spacing:12px;pointer-events:none;user-select:none;white-space:nowrap;top:50%;transform:translateY(-50%);z-index:0}
-
-/* eyebrow */
-.hero-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:36px;z-index:1;position:relative}
-.eyebrow-line{width:44px;height:1px;background:var(--muted)}
-.eyebrow-text{font-size:0.62rem;letter-spacing:5px;text-transform:uppercase;color:var(--muted)}
+.hero{padding:90px 20px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1}
 
 /* PROFILE */
-.profile-wrap{position:relative;margin-bottom:28px;z-index:1;display:inline-block}
-.profile-ring{width:160px;height:160px;border-radius:50%;background:conic-gradient(var(--accent) 0deg,rgba(232,201,122,0.15) 180deg,var(--accent) 360deg);padding:2.5px;display:inline-block}
+.profile-wrap{position:relative;margin-bottom:0;display:inline-block}
+.profile-ring-outer{width:140px;height:140px;border-radius:50%;background:conic-gradient(var(--accent),var(--accent2),var(--accent));padding:2px;position:relative}
+.profile-ring-outer::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--accent),var(--accent2),var(--accent));opacity:0.3;filter:blur(8px);z-index:-1;animation:glowPulse 3s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:0.2}50%{opacity:0.5}}
 .profile-inner{width:100%;height:100%;border-radius:50%;background:var(--card);overflow:hidden;display:flex;align-items:center;justify-content:center}
 .profile-inner img{width:100%;height:100%;object-fit:cover}
-.profile-inner svg{width:48px;height:48px;color:rgba(245,242,238,0.1)}
-.profile-badge{position:absolute;bottom:4px;right:0px;background:rgba(8,8,8,0.92);border:1px solid rgba(232,201,122,0.25);padding:5px 12px;border-radius:100px;font-size:0.56rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:6px;white-space:nowrap}
-.profile-badge::before{content:'';width:5px;height:5px;background:#2ecc71;border-radius:50%;animation:blink 2s ease-in-out infinite;flex-shrink:0}
+.profile-inner svg{width:44px;height:44px;color:var(--muted)}
+
+/* LEARNER BADGE */
+.learner-badge{display:inline-flex;align-items:center;gap:6px;background:var(--card2);border:1px solid rgba(167,139,250,0.25);padding:5px 14px;border-radius:100px;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-top:10px;box-shadow:0 0 12px rgba(167,139,250,0.12)}
+.learner-badge::before{content:'';width:5px;height:5px;background:#34d399;border-radius:50%;animation:blink 2s ease-in-out infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-/* ══ NAME BLOCK — redesigned ══ */
-.name-block{position:relative;z-index:1;margin-bottom:32px}
+/* NAME */
+.hero-name{margin:18px 0 4px}
+.hero-name-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:2px}
+.hero-name-main{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,12vw,5rem);letter-spacing:3px;color:var(--white);display:block;text-shadow:0 0 40px rgba(167,139,250,0.2)}
+.hero-role{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:4px}
 
-/* Bengali name with decorative lines */
-.name-bengali-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:10px}
-.name-deco-line{flex:0 0 40px;height:1px;background:linear-gradient(to right,transparent,var(--accent))}
-.name-deco-line.right{background:linear-gradient(to left,transparent,var(--accent))}
-.name-bengali{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,3vw,1.6rem);color:var(--accent);letter-spacing:4px;font-weight:300}
-
-/* Big English name */
-.name-english{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5rem,14vw,11rem);letter-spacing:3px;line-height:0.88;color:var(--white);display:block;position:relative}
-/* subtle glow under name */
-.name-english::after{content:'KHAN';position:absolute;left:50%;transform:translateX(-50%);bottom:-10px;font-size:clamp(4.5rem,14vw,11rem);color:transparent;-webkit-text-stroke:1px rgba(232,201,122,0.08);letter-spacing:3px;pointer-events:none;user-select:none}
-
-/* role tag */
-.name-role{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-size:0.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted)}
-.name-role-dot{width:3px;height:3px;background:var(--accent);border-radius:50%;display:inline-block}
-
-/* ══ INFO CARDS — horizontal chips ══ */
-.info-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:34px;z-index:1;position:relative;max-width:600px}
-.chip{display:flex;align-items:center;gap:8px;background:rgba(245,242,238,0.04);border:1px solid var(--border);padding:9px 16px;border-radius:100px;transition:all 0.3s}
-.chip:hover{border-color:rgba(232,201,122,0.3);background:rgba(232,201,122,0.05)}
-.chip svg{width:13px;height:13px;color:var(--accent);flex-shrink:0}
-.chip-label{font-size:0.65rem;letter-spacing:1px;color:var(--muted);margin-right:2px}
-.chip-value{font-size:0.75rem;color:var(--cream)}
-.chip a{color:var(--cream);text-decoration:none}
-.chip a:hover{color:var(--accent)}
-
-/* BTNS */
-.hero-btns{display:flex;gap:12px;justify-content:center;position:relative;z-index:1}
-.btn-fill{background:var(--white);color:var(--black);padding:12px 32px;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block;transition:background 0.3s}
-.btn-fill:hover{background:var(--accent)}
-.btn-ghost{border:1px solid var(--border);color:var(--cream);padding:12px 32px;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;background:transparent;text-decoration:none;display:inline-block;transition:all 0.3s}
-.btn-ghost:hover{border-color:rgba(245,242,238,0.25);background:rgba(245,242,238,0.04)}
-
-.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;opacity:0.3;z-index:1}
-.scroll-hint span{font-size:0.56rem;letter-spacing:4px;text-transform:uppercase}
-.scroll-bar{width:1px;height:34px;background:var(--white);animation:grow 2s ease-in-out infinite}
-@keyframes grow{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* ══ CONTACT ICON BUTTONS ══ */
+.contact-icons{display:flex;gap:12px;justify-content:center;margin:20px 0 0;flex-wrap:wrap}
+.cicon{width:52px;height:52px;border-radius:14px;background:var(--card2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s;position:relative;overflow:hidden}
+.cicon::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(167,139,250,0.15),transparent);opacity:0;transition:opacity 0.3s}
+.cicon:hover::before{opacity:1}
+.cicon:hover{border-color:rgba(167,139,250,0.4);box-shadow:0 0 20px rgba(167,139,250,0.15);transform:translateY(-2px)}
+.cicon svg{width:20px;height:20px;color:var(--accent);position:relative;z-index:1}
+.cicon.fb-icon:hover{border-color:rgba(24,119,242,0.4);box-shadow:0 0 20px rgba(24,119,242,0.15)}
+.cicon.fb-icon svg{color:var(--fb)}
 
 /* DIVIDER */
-.sec-divider{display:flex;align-items:center;padding:0 48px}
-.sdiv-line{flex:1;height:1px;background:var(--border)}
-.sdiv-text{font-size:0.58rem;letter-spacing:5px;text-transform:uppercase;color:var(--muted);padding:0 20px}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:24px 20px 0}
 
-/* WORK */
-#work{padding:60px 48px 96px}
-.work-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:42px}
-.work-eyebrow{font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.work-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,5rem);letter-spacing:3px;line-height:1}
-.work-title span{color:var(--accent)}
-.work-num{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:rgba(245,242,238,0.06);font-style:italic;line-height:1}
+/* ══ GALLERY SECTION ══ */
+.gallery-section{padding:20px 16px 40px;position:relative;z-index:1}
 
-.tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:34px}
-.tab-btn{padding:11px 22px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;color:var(--muted);cursor:none;font-family:'DM Sans',sans-serif;font-size:0.66rem;letter-spacing:3px;text-transform:uppercase;transition:all 0.3s}
-.tab-btn.active{color:var(--white);border-bottom-color:var(--accent)}
-.tab-btn:hover{color:var(--cream)}
+/* SEARCH RESULT LABEL */
+.search-label{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:none;padding:0 4px}
+.search-label.visible{display:block}
+
+/* TABS */
+.tabs{display:flex;gap:0;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:4px;margin-bottom:16px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{flex:1;padding:9px 12px;background:none;border:none;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;border-radius:7px;transition:all 0.3s;white-space:nowrap;min-width:0}
+.tab-btn.active{background:var(--card2);color:var(--white);box-shadow:0 0 16px rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.2)}
+.tab-btn:hover:not(.active){color:var(--cream)}
 .tab-panel{display:none}.tab-panel.active{display:block}
 
-.gallery-grid{columns:3;gap:3px;column-gap:3px}
-.gallery-card{break-inside:avoid;margin-bottom:3px;position:relative;overflow:hidden;cursor:none;background:var(--card)}
-.gallery-card img,.gallery-card video{width:100%;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)}
-.gallery-card:hover img,.gallery-card:hover video{transform:scale(1.06)}
-.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.88) 0%,transparent 55%);opacity:0;transition:opacity 0.35s;padding:16px;display:flex;flex-direction:column;justify-content:flex-end}
+/* GALLERY */
+.gallery-grid{columns:2;gap:8px;column-gap:8px}
+.gallery-card{break-inside:avoid;margin-bottom:8px;position:relative;overflow:hidden;cursor:pointer;background:var(--card);border-radius:10px;border:1px solid var(--border);transition:all 0.3s}
+.gallery-card:hover{border-color:rgba(167,139,250,0.3);box-shadow:0 0 24px rgba(167,139,250,0.1)}
+.gallery-card img,.gallery-card video{width:100%;display:block;border-radius:9px;transition:transform 0.5s}
+.gallery-card:hover img,.gallery-card:hover video{transform:scale(1.04)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,9,0.85),transparent 60%);opacity:0;transition:opacity 0.3s;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:9px}
 .gallery-card:hover .gallery-overlay{opacity:1}
-.gallery-name{font-size:0.66rem;letter-spacing:3px;text-transform:uppercase;color:var(--cream)}
-.gallery-cat{font-size:0.54rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-top:2px}
-.loading-text{text-align:center;padding:56px;color:var(--muted);font-size:0.66rem;letter-spacing:3px;text-transform:uppercase;display:block}
+.gallery-name{font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--cream)}
 
-/* ══ FOOTER — redesigned ══ */
-footer{padding:64px 48px 40px;border-top:1px solid var(--border)}
+/* EMPTY / LOADING */
+.empty-state{text-align:center;padding:48px 20px;color:var(--muted);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;grid-column:1/-1;column-span:all}
+.empty-state svg{width:40px;height:40px;color:var(--muted);margin:0 auto 12px;display:block;opacity:0.4}
 
-/* Top row: brand + social */
-.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;gap:32px;flex-wrap:wrap}
-.footer-brand{}
-.footer-logo-big{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:4px;display:block;color:var(--white);margin-bottom:10px}
-.footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--muted);line-height:1.8;max-width:260px}
+/* NO RESULTS */
+.no-results{display:none;text-align:center;padding:48px 20px;color:var(--muted)}
+.no-results.visible{display:block}
+.no-results-icon{font-size:2.5rem;margin-bottom:10px}
+.no-results p{font-size:0.72rem;letter-spacing:2px;text-transform:uppercase}
+.no-results span{color:var(--accent)}
 
-/* Social links */
-.footer-socials{display:flex;flex-direction:column;gap:10px}
-.social-link{display:flex;align-items:center;gap:12px;padding:12px 18px;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:all 0.3s;min-width:220px}
-.social-link:hover{border-color:rgba(245,242,238,0.2);background:rgba(245,242,238,0.03)}
-.social-link.fb:hover{border-color:rgba(24,119,242,0.4);background:rgba(24,119,242,0.06)}
-.social-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.social-icon.email-icon{background:rgba(232,201,122,0.1);border:1px solid rgba(232,201,122,0.15)}
-.social-icon.email-icon svg{color:var(--accent)}
-.social-icon.fb-icon{background:rgba(24,119,242,0.12);border:1px solid rgba(24,119,242,0.2)}
-.social-icon.fb-icon svg{color:#1877f2}
-.social-info{}
-.social-platform{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
-.social-handle{font-size:0.8rem;color:var(--cream);display:block}
-
-/* Middle row: contact info chips */
-.footer-contacts{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:44px}
-.fcontact-chip{display:flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:all 0.3s}
-.fcontact-chip:hover{border-color:rgba(232,201,122,0.2);background:rgba(232,201,122,0.04)}
-.fcontact-chip svg{width:14px;height:14px;color:var(--accent);flex-shrink:0}
-.fcontact-chip span{font-size:0.78rem;color:var(--cream)}
-
-/* Bottom */
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border)}
-.footer-copy,.footer-role{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+/* ══ FOOTER ══ */
+footer{padding:36px 20px 32px;border-top:1px solid var(--border);position:relative;z-index:1;overflow:hidden}
+footer::before{content:'JK';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:200px;color:rgba(167,139,250,0.025);right:-10px;bottom:-20px;pointer-events:none;user-select:none;line-height:1}
+.footer-name{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:4px;display:block;color:var(--white);margin-bottom:4px;text-shadow:0 0 30px rgba(167,139,250,0.2)}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.92rem;color:var(--muted);line-height:1.7;margin-bottom:24px;max-width:300px}
+.footer-info{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.finfo-item{display:flex;align-items:center;gap:10px;font-size:0.78rem;color:var(--cream);text-decoration:none;transition:color 0.3s}
+.finfo-item:hover{color:var(--accent)}
+.finfo-item svg{width:14px;height:14px;color:var(--accent);flex-shrink:0}
+.footer-bottom{display:flex;flex-direction:column;gap:4px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-copy,.footer-role{font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 
 /* LIGHTBOX */
-#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:999;align-items:center;justify-content:center}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:16px}
 #lb.open{display:flex}
-#lb-close{position:absolute;top:20px;right:28px;color:var(--muted);cursor:none;background:none;border:none;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;font-family:'DM Sans',sans-serif;transition:color 0.3s}
-#lb-close:hover{color:var(--white)}
+#lb-close{color:var(--muted);cursor:pointer;background:rgba(255,255,255,0.05);border:1px solid var(--border);font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;font-family:'DM Sans',sans-serif;padding:8px 20px;border-radius:100px;transition:all 0.3s}
+#lb-close:hover{color:var(--white);border-color:var(--accent)}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
-
-@media(max-width:900px){
-  nav{padding:18px 22px}
-  nav::after{left:22px;right:22px}
-  .nav-cta{display:none}
-  .hero{padding:100px 20px 90px}
-  #work{padding:50px 22px 80px}
-  .work-top{flex-direction:column;align-items:flex-start;gap:4px}
-  .gallery-grid{columns:2}
-  .sec-divider{padding:0 22px}
-  footer{padding:48px 22px 36px}
-  .footer-top{flex-direction:column;gap:28px}
-  .footer-bottom{flex-direction:column;gap:10px;text-align:center}
-  .social-link{min-width:unset;width:100%}
-}
-@media(max-width:500px){
-  .gallery-grid{columns:1}
-  .info-chips{gap:8px}
+@media(min-width:600px){
+  .gallery-grid{columns:3}
+  .contact-icons{gap:16px}
+  .cicon{width:58px;height:58px}
 }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-trail" id="cursor-trail"></div>
-
+<!-- NAV -->
 <nav>
   <div class="nav-logo">JK.</div>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#footer">Contact</a></li>
-    </ul>
-    <a href="mailto:mdjunaidkhan097@gmail.com" class="nav-cta">Hire Me</a>
+  <div class="search-wrap">
+    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+    <input class="search-input" id="searchInput" type="text" placeholder="Search photos, videos..." autocomplete="off">
+    <button class="search-clear" id="searchClear">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
-<!-- ══ HERO ══ -->
-<section class="hero" id="hero">
-  <div class="hero-bg-word">JUNAID</div>
-
-  <div class="hero-eyebrow reveal">
-    <div class="eyebrow-line"></div>
-    <div class="eyebrow-text">Portfolio · 2025 · Bangladesh</div>
-    <div class="eyebrow-line"></div>
-  </div>
-
-  <!-- Profile -->
-  <div class="profile-wrap reveal d1">
-    <div class="profile-ring">
-      <div class="profile-inner" id="profile-img-container">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-      </div>
-    </div>
-    <div class="profile-badge">learner</div>
-  </div>
-
-  <!-- ══ NAME BLOCK ══ -->
-  <div class="name-block reveal d2">
-    <div class="name-bengali-wrap">
-      <div class="name-deco-line"></div>
-      <span class="name-bengali">মোঃ যুনাইদ</span>
-      <div class="name-deco-line right"></div>
-    </div>
-    <div class="name-role">
-      <span>Photographer</span>
-      <span class="name-role-dot"></span>
-      <span>Designer</span>
-      <span class="name-role-dot"></span>
-      <span>Creative</span>
-    </div>
-  </div>
-
-  <!-- ══ INFO CHIPS ══ -->
-  <div class="info-chips reveal d3">
-    <div class="chip">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-      <span class="chip-value">Bangladesh 🇧🇩</span>
-    </div>
-    <div class="chip">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
-      <span class="chip-value"><a href="tel:01743558176">+880 1743-558176</a></span>
-    </div>
-    <div class="chip">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-      <span class="chip-value"><a href="mailto:mdjunaidkhan097@gmail.com">mdjunaidkhan097@gmail.com</a></span>
-    </div>
-    <div class="chip">
-      <!-- Facebook icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="color:#1877f2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      <span class="chip-value"><a href="https://www.facebook.com/Junaid.Khan.097" target="_blank">Junaid.Khan.097</a></span>
-    </div>
-  </div>
-
-  <div class="hero-btns reveal d4">
-    <a href="#work" class="btn-fill">View Work</a>
-    <a href="mailto:mdjunaidkhan097@gmail.com" class="btn-ghost">Get In Touch</a>
-  </div>
-
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-bar"></div>
-  </div>
-</section>
-
-<div class="sec-divider">
-  <div class="sdiv-line"></div>
-  <div class="sdiv-text">My Collection</div>
-  <div class="sdiv-line"></div>
+<!-- DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <a href="#hero" class="drawer-link" onclick="closeDrawer()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+    Home
+  </a>
+  <a href="#gallery-section" class="drawer-link" onclick="closeDrawer()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>
+    My Work
+  </a>
+  <div class="drawer-divider"></div>
+  <a href="tel:01743558176" class="drawer-link">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+    +880 1743-558176
+  </a>
+  <a href="mailto:mdjunaidkhan097@gmail.com" class="drawer-link">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+    Email Me
+  </a>
+  <a href="https://www.facebook.com/Junaid.Khan.097" target="_blank" class="drawer-link">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="color:#1877f2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    Facebook
+  </a>
 </div>
 
-<!-- ══ WORK ══ -->
-<section id="work">
-  <div class="work-top reveal">
-    <div>
-      <div class="work-eyebrow">// Selected Works</div>
-      <div class="work-title">My <span>Portfolio</span></div>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="profile-wrap">
+    <div class="profile-ring-outer">
+      <div class="profile-inner" id="profile-img-container">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
+      </div>
     </div>
-    <div class="work-num" id="total-count">00</div>
   </div>
+  <div class="learner-badge">Learner</div>
 
-  <div class="tabs reveal">
-    <button class="tab-btn active" onclick="switchTab('photos',this)">Photos</button>
-    <button class="tab-btn" onclick="switchTab('videos',this)">Videos</button>
-    <button class="tab-btn" onclick="switchTab('designs',this)">Designs</button>
-    <button class="tab-btn" onclick="switchTab('other',this)">Other Work</button>
+  <div class="hero-name">
+    <span class="hero-name-sub">মোঃ যুনাইদ</span>
+    <span class="hero-name-main">KHAN</span>
   </div>
+  <div class="hero-role">Photographer · Designer · Creative</div>
 
-  <div id="tab-photos" class="tab-panel active"><div class="gallery-grid" id="photos-container"><div class="loading-text">Loading...</div></div></div>
-  <div id="tab-videos" class="tab-panel"><div class="gallery-grid" id="videos-container"><div class="loading-text">Loading...</div></div></div>
-  <div id="tab-designs" class="tab-panel"><div class="gallery-grid" id="designs-container"><div class="loading-text">Loading...</div></div></div>
-  <div id="tab-other" class="tab-panel"><div class="gallery-grid" id="other-container"><div class="loading-text">Loading...</div></div></div>
+  <!-- 4 CONTACT ICON BUTTONS -->
+  <div class="contact-icons">
+    <a href="tel:01743558176" class="cicon" title="Call">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+    </a>
+    <a href="mailto:mdjunaidkhan097@gmail.com" class="cicon" title="Email">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+    </a>
+    <a href="https://www.facebook.com/Junaid.Khan.097" target="_blank" class="cicon fb-icon" title="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://maps.google.com/?q=Bangladesh" target="_blank" class="cicon" title="Location">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+    </a>
+  </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<div class="divider"></div>
+
+<!-- GALLERY -->
+<div class="gallery-section" id="gallery-section">
+  <div class="search-label" id="searchLabel"></div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('photos',this)">Photos</button>
+    <button class="tab-btn" onclick="switchTab('videos',this)">Videos</button>
+    <button class="tab-btn" onclick="switchTab('designs',this)">Web</button>
+    <button class="tab-btn" onclick="switchTab('other',this)">Other</button>
+  </div>
+
+  <!-- SEARCH MODE -->
+  <div id="search-results" style="display:none">
+    <div class="gallery-grid" id="search-grid"></div>
+    <div class="no-results" id="noResults">
+      <div class="no-results-icon">🔍</div>
+      <p>No results for "<span id="noResultsQuery"></span>"</p>
+    </div>
+  </div>
+
+  <!-- TAB PANELS -->
+  <div id="tab-photos" class="tab-panel active"><div class="gallery-grid" id="photos-container"><div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>Loading...</div></div></div>
+  <div id="tab-videos" class="tab-panel"><div class="gallery-grid" id="videos-container"><div class="empty-state">Loading...</div></div></div>
+  <div id="tab-designs" class="tab-panel"><div class="gallery-grid" id="designs-container"><div class="empty-state">Loading...</div></div></div>
+  <div id="tab-other" class="tab-panel"><div class="gallery-grid" id="other-container"><div class="empty-state">Loading...</div></div></div>
+</div>
+
+<!-- FOOTER -->
 <footer id="footer">
-  <div class="footer-top">
-    <div class="footer-brand reveal">
-      <span class="footer-logo-big">Junaid Khan</span>
-      <p class="footer-tagline">"I capture the story of life through the camera lens — turning every moment into art."</p>
-    </div>
-
-    <!-- Social cards -->
-    <div class="footer-socials reveal d1">
-      <a href="mailto:mdjunaidkhan097@gmail.com" class="social-link">
-        <div class="social-icon email-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-        </div>
-        <div class="social-info">
-          <span class="social-platform">Email</span>
-          <span class="social-handle">mdjunaidkhan097@gmail.com</span>
-        </div>
-      </a>
-      <a href="https://www.facebook.com/Junaid.Khan.097" target="_blank" class="social-link fb">
-        <div class="social-icon fb-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </div>
-        <div class="social-info">
-          <span class="social-platform">Facebook</span>
-          <span class="social-handle">Junaid.Khan.097</span>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- Contact chips row -->
-  <div class="footer-contacts reveal">
-    <a href="tel:01743558176" class="fcontact-chip">
+  <span class="footer-name">Junaid Khan</span>
+  <p class="footer-tagline">"I capture the story of life through the camera lens — turning every moment into art."</p>
+  <div class="footer-info">
+    <a href="tel:01743558176" class="finfo-item">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
-      <span>+880 1743-558176</span>
+      +880 1743-558176
     </a>
-    <a href="mailto:mdjunaidkhan097@gmail.com" class="fcontact-chip">
+    <a href="mailto:mdjunaidkhan097@gmail.com" class="finfo-item">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-      <span>mdjunaidkhan097@gmail.com</span>
+      mdjunaidkhan097@gmail.com
     </a>
-    <a href="https://www.facebook.com/Junaid.Khan.097" target="_blank" class="fcontact-chip">
+    <a href="https://www.facebook.com/Junaid.Khan.097" target="_blank" class="finfo-item">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1877f2" width="14" height="14"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      <span>facebook.com/Junaid.Khan.097</span>
+      facebook.com/Junaid.Khan.097
     </a>
-    <div class="fcontact-chip">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-      <span>Bangladesh 🇧🇩</span>
-    </div>
   </div>
-
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 Md. Junaid Khan · All rights reserved</div>
     <div class="footer-role">Photographer · Designer · Creative</div>
   </div>
 </footer>
 
+<!-- LIGHTBOX -->
 <div id="lb">
-  <button id="lb-close" onclick="closeLb()">✕ Close</button>
   <div id="lb-content"></div>
+  <button id="lb-close" onclick="closeLb()">✕ Close</button>
 </div>
 
 <script>
-const cur=document.getElementById('cursor');
-const trail=document.getElementById('cursor-trail');
-if(window.matchMedia('(pointer:fine)').matches){
-  document.addEventListener('mousemove',e=>{
-    cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
-    setTimeout(()=>{trail.style.left=e.clientX+'px';trail.style.top=e.clientY+'px'},80);
-  });
-  document.querySelectorAll('a,button').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)'});
-    el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)'});
-  });
+// ══ HAMBURGER ══
+const hamburger=document.getElementById('hamburger');
+const drawer=document.getElementById('drawer');
+const drawerOverlay=document.getElementById('drawerOverlay');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  drawer.classList.toggle('open');
+  drawerOverlay.classList.toggle('open');
+});
+function closeDrawer(){
+  hamburger.classList.remove('open');
+  drawer.classList.remove('open');
+  drawerOverlay.classList.remove('open');
 }
 
+// ══ GITHUB CONFIG ══
 const GITHUB_USER="khan-097";
 const REPO_NAME="my-portfolio";
 const SECTIONS={
@@ -386,18 +318,40 @@ const SECTIONS={
   designs:{folder:"assets/designs",types:/\.(jpg|jpeg|png|webp)$/i},
   other:{folder:"assets/other",types:/\.(jpg|jpeg|png|webp|mp4)$/i}
 };
-let totalFiles=0;const loaded={};
 
+// all loaded files stored for search
+const allFiles=[];
+const loaded={};
+
+// ══ PROFILE ══
 async function loadProfileImage(){
   const exts=['jpg','jpeg','png','webp'];
   for(const ext of exts){
     const url=`https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/assets/profile.${ext}`;
-    try{const r=await fetch(url,{method:'HEAD'});if(r.ok){document.getElementById('profile-img-container').innerHTML=`<img src="${url}" alt="Md. Junaid Khan">`;return;}}catch(e){}
+    try{const r=await fetch(url,{method:'HEAD'});if(r.ok){document.getElementById('profile-img-container').innerHTML=`<img src="${url}" alt="Junaid Khan">`;return;}}catch(e){}
   }
 }
 
+// ══ MAKE CARD ══
+function makeCard(file,catName){
+  const url=`https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/${file.path}`;
+  const isVideo=/\.(mp4|webm)$/i.test(file.name);
+  const niceName=file.name.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ');
+  const card=document.createElement('div');
+  card.className='gallery-card';
+  card.dataset.name=niceName.toLowerCase();
+  card.dataset.cat=catName;
+  card.onclick=()=>openLb(isVideo?'video':'img',url);
+  card.innerHTML=isVideo
+    ?`<video src="${url}" muted loading="lazy" style="width:100%;border-radius:9px"></video><div class="gallery-overlay"><span class="gallery-name">${niceName}</span></div>`
+    :`<img src="${url}" alt="${niceName}" loading="lazy"><div class="gallery-overlay"><span class="gallery-name">${niceName}</span></div>`;
+  return card;
+}
+
+// ══ LOAD SECTION ══
 async function loadSection(name){
-  if(loaded[name])return;loaded[name]=true;
+  if(loaded[name])return;
+  loaded[name]=true;
   const{folder,types}=SECTIONS[name];
   const container=document.getElementById(name+'-container');
   try{
@@ -405,44 +359,104 @@ async function loadSection(name){
     if(!res.ok)throw new Error();
     const files=await res.json();
     const valid=files.filter(f=>types.test(f.name));
-    if(!valid.length){container.innerHTML='<div class="loading-text">Nothing uploaded yet.</div>';return;}
+    if(!valid.length){container.innerHTML='<div class="empty-state">Nothing here yet.</div>';return;}
     container.innerHTML='';
     valid.forEach(file=>{
-      const url=`https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/${file.path}`;
-      const isVideo=/\.(mp4|webm)$/i.test(file.name);
-      const card=document.createElement('div');card.className='gallery-card';
-      card.onclick=()=>openLb(isVideo?'video':'img',url);
-      const n=file.name.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ');
-      card.innerHTML=isVideo
-        ?`<video src="${url}" muted loading="lazy" style="width:100%"></video><div class="gallery-overlay"><span class="gallery-name">${n}</span><span class="gallery-cat">Video</span></div>`
-        :`<img src="${url}" alt="${n}" loading="lazy"><div class="gallery-overlay"><span class="gallery-name">${n}</span><span class="gallery-cat">${name}</span></div>`;
+      const card=makeCard(file,name);
       container.appendChild(card);
-      totalFiles++;
-      document.getElementById('total-count').textContent=String(totalFiles).padStart(2,'0');
+      // store for search
+      allFiles.push({file,name,niceName:file.name.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ').toLowerCase()});
     });
-  }catch(e){container.innerHTML='<div class="loading-text">Upload files to GitHub to see them here.</div>';}
+  }catch(e){container.innerHTML='<div class="empty-state">Upload files to GitHub to see them here.</div>';}
 }
 
+// ══ TABS ══
+let activeTab='photos';
 function switchTab(name,btn){
+  activeTab=name;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
   loadSection(name);
+  // if search active, re-filter
+  const q=document.getElementById('searchInput').value.trim();
+  if(q)doSearch(q);
 }
+
+// ══ SEARCH ══
+const searchInput=document.getElementById('searchInput');
+const searchClear=document.getElementById('searchClear');
+const searchResultsWrap=document.getElementById('search-results');
+const searchGrid=document.getElementById('search-grid');
+const searchLabel=document.getElementById('searchLabel');
+const noResults=document.getElementById('noResults');
+const noResultsQuery=document.getElementById('noResultsQuery');
+
+// load ALL sections in background so search works across all
+async function loadAllSections(){
+  for(const name of Object.keys(SECTIONS)){
+    await loadSection(name);
+  }
+}
+
+function doSearch(q){
+  const query=q.toLowerCase().trim();
+  if(!query){clearSearch();return;}
+
+  // show search mode
+  document.querySelectorAll('.tab-panel').forEach(p=>p.style.display='none');
+  searchResultsWrap.style.display='block';
+  searchLabel.classList.add('visible');
+  searchLabel.textContent=`Search results for "${q}"`;
+  searchClear.classList.add('visible');
+
+  // filter
+  const matches=allFiles.filter(item=>item.niceName.includes(query));
+  searchGrid.innerHTML='';
+  noResults.classList.remove('visible');
+
+  if(!matches.length){
+    noResultsQuery.textContent=q;
+    noResults.classList.add('visible');
+    return;
+  }
+  matches.forEach(item=>{
+    const card=makeCard(item.file,item.name);
+    searchGrid.appendChild(card);
+  });
+}
+
+function clearSearch(){
+  searchInput.value='';
+  searchClear.classList.remove('visible');
+  searchResultsWrap.style.display='none';
+  searchLabel.classList.remove('visible');
+  document.querySelectorAll('.tab-panel').forEach(p=>p.style.display='');
+  document.getElementById('tab-'+activeTab).classList.add('active');
+}
+
+searchInput.addEventListener('input',()=>{
+  const q=searchInput.value.trim();
+  if(q){doSearch(q);searchClear.classList.add('visible');}
+  else{clearSearch();}
+});
+searchClear.addEventListener('click',clearSearch);
+
+// ══ LIGHTBOX ══
 function openLb(type,url){
   document.getElementById('lb-content').innerHTML=type==='video'
-    ?`<video src="${url}" controls autoplay style="max-width:92vw;max-height:90vh"></video>`
-    :`<img src="${url}" style="max-width:92vw;max-height:90vh;object-fit:contain">`;
+    ?`<video src="${url}" controls autoplay style="max-width:92vw;max-height:80vh;border-radius:8px"></video>`
+    :`<img src="${url}" style="max-width:92vw;max-height:80vh;object-fit:contain;border-radius:8px">`;
   document.getElementById('lb').classList.add('open');
 }
 function closeLb(){document.getElementById('lb').classList.remove('open');document.getElementById('lb-content').innerHTML='';}
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)closeLb()});
 
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-loadProfileImage();loadSection('photos');
+// ══ INIT ══
+loadProfileImage();
+loadSection('photos'); // load active tab first
+loadAllSections();     // then load rest in bg for search
 </script>
 </body>
 </html>
